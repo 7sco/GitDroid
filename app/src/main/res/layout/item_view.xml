@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@color/graybakground"
+            android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/titleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:text="Calculator"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ffffff"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="100dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/descriptionTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/dumyDescription"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"                    android:orientation="vertical"
+                    android:gravity="bottom"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:drawableTop="@drawable/ic_share"
+                        android:drawableTint="#ffffff"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:id="@+id/branchTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="master"
+                        android:textAlignment="center"
+                        android:textColor="@color/editTextHint"
+                        android:textSize="12dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:drawableTop="@drawable/team"
+                        android:layout_height="20dp" />
+                    <TextView
+                        android:id="@+id/collaboratorsTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="collaborators"
+                        android:textStyle="italic"
+                        android:textSize="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/editTextHint"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:gravity="top">
+                    <TextView
+                        android:id="@+id/languageTV"
+                        android:layout_width="match_parent"
+                        android:text="JAVA"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:layout_height="20dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="language"
+                        android:textSize="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/editTextHint"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/dateTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dec"
+                        android:textSize="10dp"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/editTextHint"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </LinearLayout>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="1.5dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@color/blue"/>
+
+</LinearLayout>
+

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GitDroid</string>
+    <string name="dumyDescription">Program that allows user to manipulate Entered text, with the options of coping, deleting and undo</string>
+</resources>
