@@ -23,8 +23,8 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
     List<RootObjectRepos> repoList;
     Context context;
 
-    public RepoAdapter( Context context) {
-        repoList= new ArrayList<>();
+    public RepoAdapter(Context context) {
+        repoList = new ArrayList<>();
         this.context = context;
     }
 

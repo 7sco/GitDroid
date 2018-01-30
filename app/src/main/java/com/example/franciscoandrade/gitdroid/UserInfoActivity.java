@@ -40,28 +40,29 @@ public class UserInfoActivity extends AppCompatActivity {
     CircleImageView profile_image;
     TextView profileName, followerTV, followingTV, publicTV;
 
-    List<RootObject> userList= new ArrayList<>();
+    List<RootObject> userList = new ArrayList<>();
     List<RootObjectRepos> reposList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
         showToolBar("", true);
-        fragmentContainer=(FrameLayout)findViewById(R.id.fragmentContainer);
-        recyclerContainer=(RecyclerView)findViewById(R.id.recyclerContainer);
-        profile_image=(CircleImageView) findViewById(R.id.profile_image);
-        profileName=(TextView) findViewById(R.id.profileName);
-        followerTV=(TextView) findViewById(R.id.followerTV);
-        followingTV=(TextView) findViewById(R.id.followingTV);
-        publicTV=(TextView) findViewById(R.id.publicTV);
-        repoAdapter= new RepoAdapter(this);
+        fragmentContainer = (FrameLayout) findViewById(R.id.fragmentContainer);
+        recyclerContainer = (RecyclerView) findViewById(R.id.recyclerContainer);
+        profile_image = (CircleImageView) findViewById(R.id.profile_image);
+        profileName = (TextView) findViewById(R.id.profileName);
+        followerTV = (TextView) findViewById(R.id.followerTV);
+        followingTV = (TextView) findViewById(R.id.followingTV);
+        publicTV = (TextView) findViewById(R.id.publicTV);
+        repoAdapter = new RepoAdapter(this);
         recyclerContainer.setAdapter(repoAdapter);
         recyclerContainer.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerContainer.setLayoutManager(linearLayoutManager);
 
         Bundle extras = getIntent().getExtras();
-        String userNane= extras.getString("username");
+        String userNane = extras.getString("username");
 
         retrofitUser();
         obtenerDatos(userNane);
@@ -90,9 +91,7 @@ public class UserInfoActivity extends AppCompatActivity {
                     followerTV.setText(String.valueOf(rootObject.getFollowers()));
                     followingTV.setText(String.valueOf(rootObject.getFollowing()));
                     publicTV.setText("Public Repos: " + String.valueOf(rootObject.getPublic_repos()));
-                }
-
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "User Not Found", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -111,14 +110,14 @@ public class UserInfoActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<RootObjectRepos>> call, Response<List<RootObjectRepos>> response) {
                 if (response.isSuccessful()) {
-                    reposList= response.body();
+                    reposList = response.body();
                     repoAdapter.addImages(reposList);
-                }
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "User Not Found", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
+
             @Override
             public void onFailure(Call<List<RootObjectRepos>> call, Throwable t) {
 

@@ -4,8 +4,7 @@ package com.example.franciscoandrade.gitdroid.restApi.model;
  * Created by franciscoandrade on 1/16/18.
  */
 
-public class Owner
-{
+public class Owner {
     public String login;
     public int id;
     public String avatar_url;
