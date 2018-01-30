@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.franciscoandrade.gitdroid.OpenHelper.SQLite_OpenHelper;
 import com.example.franciscoandrade.gitdroid.restApi.EndPointApi;
 import com.example.franciscoandrade.gitdroid.restApi.model.RootObject;
 import com.example.franciscoandrade.gitdroid.restApi.model.RootObjectRepos;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     //Todo: if user chooses yes save data, else hust how content
 
 
+    SQLite_OpenHelper helper = new SQLite_OpenHelper(this, "DB1", null, 1);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,53 +60,70 @@ public class MainActivity extends AppCompatActivity {
         checkBtn=(Button)findViewById(R.id.checkBtn);
         tectChange=(TextView) findViewById(R.id.tectChange);
 
-        usernameTV.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                tectChange.setText(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        tectChange.setText("WELCOME");
+//        usernameTV.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                tectChange.setText(s);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
     }
 
     public void onClick(View view) {
-        if(!TextUtils.isEmpty(usernameTV.getText())) {
-            AlertDialog.Builder builder= new AlertDialog.Builder(this);
-            builder.setTitle("Save to DB");
-            builder.setMessage("Do you want to save this usert to the DB");
-            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
-                    intent.putExtra("username", usernameTV.getText().toString());
-                    startActivity(intent);
-                    usernameTV.setText("");
-                }
-            });
-            builder.setNegativeButton("NO!!", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    usernameTV.setText("");
-                    Toast.makeText(getApplicationContext(), "Select new Username to search", Toast.LENGTH_SHORT).show();
 
-                }
-            });
-            builder.create();
-            builder.show();
+        if(!TextUtils.isEmpty(usernameTV.getText())) {
+            if (helper.verifyUsrPas(usernameTV.getText().toString()).getCount() > 0) {
+               sentToNextAcitivity(usernameTV.getText().toString());
+            } else {
+                //load from retrofit
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Save to DB");
+                builder.setMessage("Do you want to save this usert to the DB");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        sentToNextAcitivity(usernameTV.getText().toString());
+                    }
+                });
+                builder.setNegativeButton("NO!!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+
+                        usernameTV.setText("");
+                        Toast.makeText(getApplicationContext(), "Select new Username to search", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                builder.create();
+                builder.show();
+
+            }
         }
         else {
             Toast.makeText(this, "Empty Field, Enter text! ",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    void sentToNextAcitivity(String username){
+        Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+        usernameTV.setText("");
+
     }
 }
