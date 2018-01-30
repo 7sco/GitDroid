@@ -4,15 +4,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,14 +38,41 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView usernameTV;
+    TextInputEditText usernameTV;
+    Button checkBtn;
+    TextView tectChange;
+
+    //Todo: Show user from database in the droplist(Spinner)
+    //Todo: allow user to modify data
+    //Todo: Only ask user to save data if data is not in DB
+    //Todo: if user chooses yes save data, else hust how content
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        usernameTV= (TextView)findViewById(R.id.usernameTV);
+        usernameTV= (TextInputEditText) findViewById(R.id.usernameTV);
+        checkBtn=(Button)findViewById(R.id.checkBtn);
+        tectChange=(TextView) findViewById(R.id.tectChange);
+
+        usernameTV.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                tectChange.setText(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 

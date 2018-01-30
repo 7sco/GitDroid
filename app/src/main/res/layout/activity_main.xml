@@ -11,6 +11,12 @@
     android:focusableInTouchMode="true"
     tools:context="com.example.franciscoandrade.gitdroid.MainActivity">
 
+    <TextView
+        android:id="@+id/tectChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This Text will Change"/>
+
     <Spinner
         android:id="@+id/spinnerPetOwner"
         android:layout_width="match_parent"
@@ -46,5 +52,18 @@
         android:text="Go to Repo"
         android:theme="@style/RaisedButtonDark"
         android:onClick="onClick"/>
+
+
+    <Button
+        android:id="@+id/checkBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="chck info"
+        android:theme="@style/RaisedButtonDark"
+        />
 
 </LinearLayout>
