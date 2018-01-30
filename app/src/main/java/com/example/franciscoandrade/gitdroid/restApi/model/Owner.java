@@ -1,10 +1,12 @@
 package com.example.franciscoandrade.gitdroid.restApi.model;
 
+import java.io.Serializable;
+
 /**
  * Created by franciscoandrade on 1/16/18.
  */
 
-public class Owner
+public class Owner implements Serializable
 {
     public String login;
     public int id;
