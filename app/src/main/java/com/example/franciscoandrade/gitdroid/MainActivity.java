@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Todo: allow user to modify data
     //Todo: if user chooses yes save data, else hust how content
-    //Todo: Fix bug back pressed it creates new view on top
+    //Todo: Fix bug on no network dont load new users
 
 
     SQLite_OpenHelper helper = new SQLite_OpenHelper(this, "DB1", null, 1);
@@ -167,10 +167,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
-        finish();
 
-    }
 }
