@@ -71,6 +71,7 @@ public class UserInfoActivity extends AppCompatActivity {
         recyclerContainer.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerContainer.setLayoutManager(linearLayoutManager);
+        recyclerContainer.setNestedScrollingEnabled(false);
         Bundle extras = getIntent().getExtras();
         String userName = extras.getString("username");
 
@@ -228,6 +229,16 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         finish();
+        startActivity(new Intent(this, MainActivity.class));
         return true;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        startActivity(new Intent(this, MainActivity.class));
+
     }
 }
