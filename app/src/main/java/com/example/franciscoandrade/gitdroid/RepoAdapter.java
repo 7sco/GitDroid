@@ -1,6 +1,7 @@
 package com.example.franciscoandrade.gitdroid;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by franciscoandrade on 1/16/18.
@@ -56,6 +58,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
 
         holder.dateTV.setText(repoList.get(position).getCreated_at().toString());
 
+
     }
 
     @Override
@@ -68,8 +71,12 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
         notifyDataSetChanged();
     }
 
+    private int generateRandom() {
+        return new Random().nextInt(256);
+    }
+
     public class RepoViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTV, descriptionTV, branchTV, collaboratorsTV, languageTV, dateTV;
+        TextView titleTV, descriptionTV, branchTV, collaboratorsTV, languageTV, dateTV, sidebar;
 
         public RepoViewHolder(View itemView) {
             super(itemView);
@@ -79,6 +86,12 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
             collaboratorsTV = (TextView) itemView.findViewById(R.id.collaboratorsTV);
             languageTV = (TextView) itemView.findViewById(R.id.languageTV);
             dateTV = (TextView) itemView.findViewById(R.id.dateTV);
+            sidebar = (TextView) itemView.findViewById(R.id.sidebar);
+
+            int red = generateRandom();
+            int green = generateRandom();
+            int blue = generateRandom();
+            sidebar.setBackgroundColor(Color.rgb(red, green, blue));
         }
     }
 }
