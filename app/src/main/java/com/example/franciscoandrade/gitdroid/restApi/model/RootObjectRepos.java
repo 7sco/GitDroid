@@ -1,12 +1,13 @@
 package com.example.franciscoandrade.gitdroid.restApi.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by franciscoandrade on 1/16/18.
  */
 
-public class RootObjectRepos
+public class RootObjectRepos implements Serializable
 {
     public int id;
     public String name;
