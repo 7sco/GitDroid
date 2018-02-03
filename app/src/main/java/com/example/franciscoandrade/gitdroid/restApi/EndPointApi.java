@@ -25,6 +25,9 @@ public interface EndPointApi {
     @GET("users/{user}/followers")
     Call<List<FollowersModel>> getFollowers(@Path("user") String user);
 
+    @GET("users/{user}/following")
+    Call<List<FollowersModel>> getFollowings(@Path("user") String user);
+
 
 
 }

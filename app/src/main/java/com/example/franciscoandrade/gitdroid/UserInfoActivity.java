@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.gitdroid.MuhaimenModel.FollowersModel;
+import com.example.franciscoandrade.gitdroid.MuhaimenModel.MuhaimenRecyclerViewStuff.InfoFragment;
 import com.example.franciscoandrade.gitdroid.OpenHelper.SQLite_OpenHelper;
 import com.example.franciscoandrade.gitdroid.restApi.EndPointApi;
 import com.example.franciscoandrade.gitdroid.restApi.FollowersFragment;
@@ -51,6 +52,7 @@ public class UserInfoActivity extends AppCompatActivity {
     RecyclerView recyclerContainer;
     RepoAdapter repoAdapter;
     CircleImageView profile_image;
+    LinearLayout followingStuff;
     Owner owner;
     TextView profileName, followerTV, followingTV, publicTV;
 //<<<<<<< HEAD
@@ -80,6 +82,7 @@ public class UserInfoActivity extends AppCompatActivity {
         followerTV = (TextView) findViewById(R.id.followerTV);
         followingTV = (TextView) findViewById(R.id.followingTV);
         publicTV = (TextView) findViewById(R.id.publicTV);
+        followingStuff=(LinearLayout) findViewById(R.id.followingStuff);
 //<<<<<<< HEAD
 //=======
         getInfo = (LinearLayout) findViewById(R.id.getInfo);
@@ -117,22 +120,34 @@ public class UserInfoActivity extends AppCompatActivity {
         getInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentContainer.setBackgroundColor(Color.WHITE);
                 FollowersFragment followersFragment= new FollowersFragment();
                 FragmentManager fragmentManager=getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 Bundle bundle= new Bundle();
+                Log.d("user: ", "onClick: " + userName);
                 bundle.putString("followers",userName);
                 followersFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.fragmentContainer,followersFragment);
                 fragmentTransaction.commit();
-
-
-
+            }
+        });
+        followingStuff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoFragment followingFragment= new InfoFragment();
+                FragmentManager fragmentManager=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                Bundle bundle= new Bundle();
+                Log.d("user: ", "onClick: " + userName);
+                bundle.putString("following",userName);
+                followingFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragmentContainer,followingFragment);
+                fragmentTransaction.commit();
 
             }
         });
 //>>>>>>> 78d60cdd3d717d4489ce4b739a06545cd9e7f011
+
 
     }
 

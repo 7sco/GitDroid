@@ -27,7 +27,6 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersViewHolder> 
     @Override
     public FollowersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View childView = LayoutInflater.from(parent.getContext()).inflate(R.layout.followers_itemview, parent, false);
-
         return new FollowersViewHolder(childView);
     }
 
@@ -41,4 +40,6 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersViewHolder> 
     public int getItemCount() {
         return followersModelList.size();
     }
+
+    public void addAll(List<FollowersModel> list) {this.followersModelList.addAll(list);}
 }
