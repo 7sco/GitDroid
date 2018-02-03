@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">GitDroid</string>
     <string name="dumyDescription">Program that allows user to manipulate Entered text, with the options of coping, deleting and undo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

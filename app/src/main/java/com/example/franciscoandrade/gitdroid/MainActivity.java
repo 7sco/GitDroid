@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //
 
-                        usernameTV.setText("");
+                        usernameTV.setText(" ");
                         Toast.makeText(getApplicationContext(), "Select new Username to search", Toast.LENGTH_SHORT).show();
 
                     }

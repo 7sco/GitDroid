@@ -3,7 +3,11 @@ package com.example.franciscoandrade.gitdroid;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +19,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.franciscoandrade.gitdroid.MuhaimenModel.FollowersModel;
 import com.example.franciscoandrade.gitdroid.OpenHelper.SQLite_OpenHelper;
 import com.example.franciscoandrade.gitdroid.restApi.EndPointApi;
+import com.example.franciscoandrade.gitdroid.restApi.FollowersFragment;
+import com.example.franciscoandrade.gitdroid.restApi.model.Owner;
 import com.example.franciscoandrade.gitdroid.restApi.model.RootObject;
 import com.example.franciscoandrade.gitdroid.restApi.model.RootObjectRepos;
 import com.google.gson.Gson;
@@ -35,16 +42,18 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.HEAD;
 
+import static com.example.franciscoandrade.gitdroid.R.color.blue;
+import static com.example.franciscoandrade.gitdroid.R.color.white;
+
 public class UserInfoActivity extends AppCompatActivity {
     Retrofit retrofit;
-
     FrameLayout fragmentContainer;
     RecyclerView recyclerContainer;
     RepoAdapter repoAdapter;
     CircleImageView profile_image;
+    Owner owner;
     TextView profileName, followerTV, followingTV, publicTV;
 //<<<<<<< HEAD
-
     List<RootObject> userList = new ArrayList<>();
     List<RootObjectRepos> reposList;
 //=======
@@ -89,7 +98,7 @@ public class UserInfoActivity extends AppCompatActivity {
         retrofitUser();
         obtenerDatos(userNane);
 //=======
-        String userName = extras.getString("username");
+        final String userName = extras.getString("username");
 
         //ADD next if user already exec counter>0  load from db
         //else load from network (make retrofit call)
@@ -108,16 +117,23 @@ public class UserInfoActivity extends AppCompatActivity {
         getInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DataActivity.class);
-                Bundle bundle = new Bundle();
-                //bundle.putSerializable("result", stringToBeInserted);
-                //datajson=gson.toJson(datajson);
-                bundle.putString("result", datajson);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                fragmentContainer.setBackgroundColor(Color.WHITE);
+                FollowersFragment followersFragment= new FollowersFragment();
+                FragmentManager fragmentManager=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                Bundle bundle= new Bundle();
+                bundle.putString("followers",userName);
+                followersFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragmentContainer,followersFragment);
+                fragmentTransaction.commit();
+
+
+
+
             }
         });
 //>>>>>>> 78d60cdd3d717d4489ce4b739a06545cd9e7f011
+
     }
 
     private void retrofitUser() {
