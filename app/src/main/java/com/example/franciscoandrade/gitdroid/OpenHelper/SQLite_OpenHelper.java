@@ -71,10 +71,6 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper{
             this.getWritableDatabase().insert("gituser", null, values);
         //}
         cursor.close();
-
-
-
-
     }
 
     //Method allow to verify if user exist
